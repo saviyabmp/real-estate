@@ -1,0 +1,26 @@
+export JDBC_DATABASE_URL=jdbc:postgres://gitpod@localhost:5432/postgres
+jdbc:postgresql://@ws-5dbc74e3-b7a4-4e88-a16d-cfad9578f6bf:5432/postgres?user=gitpod
+sudo netstat -plunt |grep postgres
+
+ps -ef | grep postgres
+psql -h ~/pg/sockets postgres
+
+postgres commands
+\du    - list users.
+\l     - list dbs
+\c db-name - chose db
+\dt    - list tables
+
+
+Postgres DB Url format
+
+postgresql://[user[:password]@][netloc][:port][/dbname][?param1=value1&...]
+
+postgresql://
+postgresql://localhost
+postgresql://localhost:5432
+postgresql://localhost/mydb
+postgresql://user@localhost
+postgresql://user:secret@localhost
+postgresql://other@localhost/otherdb?connect_timeout=10&application_name=myapp
+postgresql://localhost/mydb?user=other&password=secret
