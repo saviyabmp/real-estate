@@ -13,7 +13,7 @@ RUN yes | curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
 #         postgresql-contrib \
 #     && apt-get clean && rm -rf /var/cache/apt/* && rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
 
-# RUN apt-get install net-tools
+RUN apt update && apt install -y net-tools
 
 
 # # Setup postgres server for user gitpod
