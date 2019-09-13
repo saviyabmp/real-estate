@@ -1,5 +1,4 @@
 export JDBC_DATABASE_URL=jdbc:postgres://gitpod@localhost:5432/postgres
-jdbc:postgresql://@ws-5dbc74e3-b7a4-4e88-a16d-cfad9578f6bf:5432/postgres?user=gitpod
 sudo netstat -plunt |grep postgres
 
 ps -ef | grep postgres
