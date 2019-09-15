@@ -8,9 +8,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @EntityScan(basePackages = {"com.bmp.saviya.realestate.model"})
 @EnableJpaRepositories(basePackages = {"com.bmp.saviya.realestate.repository"})
-public class RealEstateApplication {
+public class SaviyaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RealEstateApplication.class, args);
+		SpringApplication.run(SaviyaApplication.class, args);
 	}
 }
