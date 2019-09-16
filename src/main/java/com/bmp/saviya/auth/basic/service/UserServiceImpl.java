@@ -1,8 +1,8 @@
-package com.bmp.saviya.auth.service;
+package com.bmp.saviya.auth.basic.service;
 
-import com.bmp.saviya.auth.model.User;
-import com.bmp.saviya.auth.repository.RoleRepository;
-import com.bmp.saviya.auth.repository.UserRepository;
+import com.bmp.saviya.auth.basic.model.User;
+import com.bmp.saviya.auth.basic.repository.RoleRepository;
+import com.bmp.saviya.auth.basic.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

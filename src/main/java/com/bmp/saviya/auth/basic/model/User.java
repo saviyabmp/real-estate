@@ -1,10 +1,11 @@
-package com.bmp.saviya.auth.model;
+package com.bmp.saviya.auth.basic.model;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "user")
+//"user" is a reserved word in Postgresql. So use "_user" instead.
+@Table(name = "_user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

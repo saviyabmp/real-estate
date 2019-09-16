@@ -1,4 +1,4 @@
-package com.bmp.saviya.auth.service;
+package com.bmp.saviya.auth.basic.service;
 
 public interface SecurityService {
     String findLoggedInUsername();

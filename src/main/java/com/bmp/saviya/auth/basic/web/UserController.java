@@ -1,9 +1,9 @@
-package com.bmp.saviya.auth.web;
+package com.bmp.saviya.auth.basic.web;
 
-import com.bmp.saviya.auth.model.User;
-import com.bmp.saviya.auth.service.SecurityService;
-import com.bmp.saviya.auth.service.UserService;
-import com.bmp.saviya.auth.validator.UserValidator;
+import com.bmp.saviya.auth.basic.model.User;
+import com.bmp.saviya.auth.basic.service.SecurityService;
+import com.bmp.saviya.auth.basic.service.UserService;
+import com.bmp.saviya.auth.basic.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

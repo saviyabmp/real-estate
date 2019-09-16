@@ -1,10 +1,10 @@
-package com.bmp.saviya.auth.model;
+package com.bmp.saviya.auth.basic.model;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "role")
+@Table(name = "_role")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
