@@ -30,7 +30,7 @@ public class SaviyaSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
-                .loginPage("/login1")
+                .loginPage("/login")
                 .permitAll()
                 .and()
             .logout()
