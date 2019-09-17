@@ -1,4 +1,4 @@
-package com.bmp.saviya.auth.jwt;
+package com.bmp.saviya;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -14,6 +14,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import com.bmp.saviya.auth.jwt.*;
 
 @Configuration
 @EnableWebSecurity
@@ -53,7 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // We don't need CSRF for this example
         httpSecurity.csrf().disable()
         // dont authenticate this particular request
-        .authorizeRequests().antMatchers("/authenticate").permitAll().
+        .authorizeRequests().antMatchers("/authenticate","/reg").permitAll().
         // all other requests need to be authenticated
         anyRequest().authenticated().and().
         // make sure we use stateless session; session won't be used to

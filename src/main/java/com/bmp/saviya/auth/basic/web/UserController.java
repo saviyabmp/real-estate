@@ -9,8 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import java.util.Map;
 
-@Controller
+@RestController
+@CrossOrigin
 public class UserController {
     @Autowired
     private UserService userService;
@@ -20,6 +22,25 @@ public class UserController {
 
     @Autowired
     private UserValidator userValidator;
+
+    @RequestMapping(
+    value = "/reg",
+    method = RequestMethod.POST)
+    public void process(@RequestBody Map<String, Object> payload)
+        throws Exception {
+
+        System.out.println(payload);
+        String name = payload.get("name").toString();
+        String password = payload.get("password").toString();
+        System.out.println(name);
+        System.out.println(password);
+        User user = new User();
+        user.setUsername(name);
+        user.setPassword(password);
+        userService.save(user);
+        securityService.autoLogin(name, password);
+
+    }
 
     @GetMapping("/registration")
     public String registration(Model model) {

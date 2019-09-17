@@ -4,6 +4,7 @@ import com.bmp.saviya.auth.basic.model.User;
 import com.bmp.saviya.auth.basic.repository.RoleRepository;
 import com.bmp.saviya.auth.basic.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -28,5 +29,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
+    }
+
+    @Bean
+    public BCryptPasswordEncoder userDetailsService() {
+        return new BCryptPasswordEncoder();
     }
 }

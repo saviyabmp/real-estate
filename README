@@ -1,4 +1,11 @@
 export JDBC_DATABASE_URL=jdbc:postgresql://localhost:5432/postgres?user=gitpod
+
+java -jar myapp.jar -Dagentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000
+
+curl -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"name":"test","password":"test"}' http://localhost:3000/reg
+curl -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"username":"test","password":"test"}' http://localhost:3000/authenticate
+curl -H "Authorization: Bearer $jwttoken" http://localhost:3000/greeting
+
 netstat -plunt |grep postgres
 
 ps -ef | grep postgres
@@ -9,17 +16,3 @@ postgres commands
 \l     - list dbs
 \c db-name - chose db
 \dt    - list tables
-
-
-Postgres DB Url format
-
-postgresql://[user[:password]@][netloc][:port][/dbname][?param1=value1&...]
-
-postgresql://
-postgresql://localhost
-postgresql://localhost:5432
-postgresql://localhost/mydb
-postgresql://user@localhost
-postgresql://user:secret@localhost
-postgresql://other@localhost/otherdb?connect_timeout=10&application_name=myapp
-postgresql://localhost/mydb?user=other&password=secret

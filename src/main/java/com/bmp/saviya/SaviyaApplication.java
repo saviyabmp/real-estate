@@ -14,7 +14,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
 @EntityScan
 @EnableJpaRepositories
-@ComponentScan(basePackages = {"com.bmp.saviya.auth"})
+@ComponentScan(basePackages = {"com.bmp.saviya"})
 public class SaviyaApplication extends SpringBootServletInitializer {
 
     @Override
