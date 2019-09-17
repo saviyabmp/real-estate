@@ -9,3 +9,6 @@ ports:
 tasks:
   command: pg_start.sh
   command: export JDBC_DATABASE_URL=jdbc:postgresql://localhost:5432/postgres?user=gitpod
+vscode:
+  extensions:
+    - vscjava.vscode-java-pack@0.8.0:e/rgc3uUFWKcrT0VEIg1wQ==
