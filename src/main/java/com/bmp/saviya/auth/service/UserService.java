@@ -1,6 +1,6 @@
-package com.bmp.saviya.auth.basic.service;
+package com.bmp.saviya.auth.service;
 
-import com.bmp.saviya.auth.basic.model.User;
+import com.bmp.saviya.auth.model.User;
 
 public interface UserService {
     void save(User user);

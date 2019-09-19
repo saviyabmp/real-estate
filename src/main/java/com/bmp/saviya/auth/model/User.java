@@ -1,4 +1,4 @@
-package com.bmp.saviya.auth.basic.model;
+package com.bmp.saviya.auth.model;
 
 import javax.persistence.*;
 import java.util.Set;

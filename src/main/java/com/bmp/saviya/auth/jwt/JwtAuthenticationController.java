@@ -1,6 +1,6 @@
 package com.bmp.saviya.auth.jwt;
 
-import com.bmp.saviya.auth.basic.service.UserDetailsServiceImpl;
+import com.bmp.saviya.auth.service.UserDetailsServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
