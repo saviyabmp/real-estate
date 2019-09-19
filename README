@@ -2,7 +2,7 @@ export JDBC_DATABASE_URL=jdbc:postgresql://localhost:5432/postgres?user=gitpod
 
 java -jar myapp.jar -Dagentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000
 
-curl -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"name":"test","password":"test"}' http://localhost:3000/reg
+curl -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"username":"test","password":"test"}' http://localhost:3000/registration
 curl -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"username":"test","password":"test"}' http://localhost:3000/authenticate
 curl -H "Authorization: Bearer $jwttoken" http://localhost:3000/greeting
 curl http://localhost:3000/greeting
