@@ -22,8 +22,6 @@ public class DummyController {
 	@RequestMapping("/greeting")
 	public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name,
 			HttpServletResponse response) {
-		// Heroku does not add this Header.
-		response.setHeader("Access-Control-Allow-Origin", "*");
 		return new Greeting(counter.incrementAndGet(), String.format(template, name));
 	}
 
