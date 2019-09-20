@@ -25,10 +25,10 @@ public class UserController {
             user.setUsername(username.toString());
             user.setPassword(password.toString());
             userService.save(user);
-            return new ResponseEntity<>("User registered successfully", HttpStatus.OK);
+            return new ResponseEntity<String>("User registered successfully", HttpStatus.OK);
 
         } else {
-            return new ResponseEntity<>("username and password cannot be empty", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<String>("username and password cannot be empty", HttpStatus.BAD_REQUEST);
         }
     }
 }
