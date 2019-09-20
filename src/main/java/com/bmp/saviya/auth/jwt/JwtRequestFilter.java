@@ -72,6 +72,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         //CAUTION !!!!
         //Since Heroku doesn't add this. Could be a security risk. Check later !
         response.addHeader("Access-Control-Allow-Origin", "*");
+        response.addHeader("Access-Control-Allow-Headers", "Content-Type");
 
         chain.doFilter(request, response);
     }
