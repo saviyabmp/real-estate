@@ -3,6 +3,7 @@ package com.bmp.saviya.auth.controller;
 import com.bmp.saviya.auth.jwt.JwtRequest;
 import com.bmp.saviya.auth.jwt.JwtResponse;
 import com.bmp.saviya.auth.jwt.JwtTokenUtil;
+import com.bmp.saviya.auth.model.User;
 import com.bmp.saviya.auth.service.UserDetailsServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,12 +34,12 @@ public class AuthenticationController {
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
-        String storedPasswordSalt = userDetailsService.getPasswordSaltForUser(authenticationRequest.getUsername());
-        authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword() + storedPasswordSalt);
+        User user = userDetailsService.getUserByUserName(authenticationRequest.getUsername());
+        authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword() + user.getPasswordSalt());
         final UserDetails userDetails = userDetailsService
             .loadUserByUsername(authenticationRequest.getUsername());
         final String token = jwtTokenUtil.generateToken(userDetails);
-        return ResponseEntity.ok(new JwtResponse(token));
+        return ResponseEntity.ok(new JwtResponse(token, user.getEmail()));
     }
 
     private void authenticate(String username, String password) throws Exception {

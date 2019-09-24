@@ -35,9 +35,9 @@ public class UserDetailsServiceImpl implements UserDetailsService{
     }
 
     //Todo! figure out a way to properly get passwordSalt without calling the Database again.
-    public String getPasswordSaltForUser(String username) {
+    public User getUserByUserName(String username) {
         User user = userRepository.findByUsername(username);
         if (user == null) throw new UsernameNotFoundException(username);
-        return user.getPasswordSalt();
+        return user;
     }
 }
