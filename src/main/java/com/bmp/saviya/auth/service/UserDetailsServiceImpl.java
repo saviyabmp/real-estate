@@ -33,4 +33,11 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
     }
+
+    //Todo! figure out a way to properly get passwordSalt without calling the Database again.
+    public String getPasswordSaltForUser(String username) {
+        User user = userRepository.findByUsername(username);
+        if (user == null) throw new UsernameNotFoundException(username);
+        return user.getPasswordSalt();
+    }
 }

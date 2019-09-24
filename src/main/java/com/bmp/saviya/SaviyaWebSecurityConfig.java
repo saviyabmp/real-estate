@@ -57,7 +57,7 @@ public class SaviyaWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-        // We don't need CSRF for this example
+        // We don't need CSRF
         httpSecurity.csrf().disable()
         //enable cors support
         .cors().and()
@@ -71,6 +71,7 @@ public class SaviyaWebSecurityConfig extends WebSecurityConfigurerAdapter {
         .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         // Add a filter to validate the tokens with every request
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+
     }
 
     @Bean
