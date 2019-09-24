@@ -69,7 +69,7 @@ public class SaviyaWebSecurityConfig extends WebSecurityConfigurerAdapter {
             .httpStrictTransportSecurity().and()
             .frameOptions().and()
             //Since firefox blocks pages due to Content Security Policy
-            .addHeaderWriter(new StaticHeadersWriter("X-Content-Security-Policy","script-src 'self'")).and()
+            .addHeaderWriter(new StaticHeadersWriter("X-Content-Security-Policy","script-src 'self' https://saviya-be-dev.herokuapp.com")).and()
         // dont authenticate this particular request
         .authorizeRequests().antMatchers("/authenticate","/registration").permitAll().
         // all other requests need to be authenticated
