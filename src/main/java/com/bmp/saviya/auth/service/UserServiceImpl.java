@@ -9,6 +9,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.security.SecureRandom;
+import java.util.Base64;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -21,7 +23,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void save(User user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        String passwordSalt = generatePasswordSalt();
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword() + passwordSalt));
+        user.setPasswordSalt(passwordSalt);
         user.setRoles(new HashSet<>(roleRepository.findAll()));
         userRepository.save(user);
     }
@@ -34,5 +38,12 @@ public class UserServiceImpl implements UserService {
     @Bean
     public BCryptPasswordEncoder userDetailsService() {
         return new BCryptPasswordEncoder();
+    }
+
+    private String generatePasswordSalt() {
+        SecureRandom random = new SecureRandom();
+        byte[] salt = new byte[16];
+        random.nextBytes(salt);
+        return Base64.getEncoder().encodeToString(salt);
     }
 }

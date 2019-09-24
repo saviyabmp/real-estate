@@ -2,6 +2,7 @@ package com.bmp.saviya.auth.model;
 
 import javax.persistence.*;
 import java.util.Set;
+import java.time.LocalDateTime;
 
 @Entity
 //"user" is a reserved word in Postgresql. So use "_user" instead.
@@ -16,11 +17,16 @@ public class User {
 
     private String password;
 
-    @Transient
-    private String passwordConfirm;
+    private String passwordSalt;
 
     @ManyToMany
     private Set<Role> roles;
+
+    private String email;
+
+    private LocalDateTime accountCreated;
+
+    private LocalDateTime  accountLastUpdated;
 
     public Long getId() {
         return id;
@@ -46,12 +52,20 @@ public class User {
         this.password = password;
     }
 
-    public String getPasswordConfirm() {
-        return passwordConfirm;
+    public String getPasswordSalt() {
+        return passwordSalt;
     }
 
-    public void setPasswordConfirm(String passwordConfirm) {
-        this.passwordConfirm = passwordConfirm;
+    public void setPasswordSalt(String passwordSalt) {
+        this.passwordSalt = passwordSalt;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Set<Role> getRoles() {
@@ -60,5 +74,21 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public LocalDateTime  getAccountCreated () {
+        return accountCreated;
+    }
+
+    public void setAccountCreated(LocalDateTime  accountCreated) {
+        this.accountCreated = accountCreated;
+    }
+
+    public LocalDateTime  getAccountLastUpdated () {
+        return accountLastUpdated;
+    }
+
+    public void setAccountLastUpdated(LocalDateTime accountLastUpdated) {
+        this.accountLastUpdated = accountLastUpdated;
     }
 }
