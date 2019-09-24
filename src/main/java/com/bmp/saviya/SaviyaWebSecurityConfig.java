@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.header.writers.StaticHeadersWriter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -61,6 +62,14 @@ public class SaviyaWebSecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.csrf().disable()
         //enable cors support
         .cors().and()
+        .headers()
+            .contentTypeOptions().and()
+            .xssProtection().and()
+            .cacheControl().and()
+            .httpStrictTransportSecurity().and()
+            .frameOptions().and()
+            //Since firefox blocks pages due to Content Security Policy
+            .addHeaderWriter(new StaticHeadersWriter("X-Content-Security-Policy","script-src 'self'")).and()
         // dont authenticate this particular request
         .authorizeRequests().antMatchers("/authenticate","/registration").permitAll().
         // all other requests need to be authenticated
