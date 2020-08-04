@@ -8,6 +8,14 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class RequestDto {
 
-	private BusinessDto business;
+    private BusinessDto business;
+
+    public BusinessDto getBusiness() {
+        return business;
+    }
+
+    public void setBusiness(BusinessDto business) {
+        this.business = business;
+    }
 
 }

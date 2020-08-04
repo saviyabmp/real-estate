@@ -1,6 +1,5 @@
 package com.bmp.saviya.realestate.service.impl;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,11 +23,11 @@ public class BusinessServiceImpl implements BusinessService {
 	}
 
 	@Override
-	public ResponseDto addBusiness(RequestDto requestDto) {
+	public ResponseDto addBusiness(final RequestDto requestDto) {
 
-		// convert entity
-		Business bus = new Business();
-		Category cat = new Category();
+        // convert entity
+        final Business bus = new Business();
+        final Category cat = new Category();
 		cat.setId(requestDto.getBusiness().getCategory().getId());
 		bus.setCategory(cat);
 		bus.setName(requestDto.getBusiness().getName());
