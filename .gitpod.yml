@@ -6,12 +6,20 @@ ports:
 - port: 3000
 
 # List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/44_config_start_tasks/
-tasks:
-  command: pg_start.sh
-  command: export JDBC_DATABASE_URL=jdbc:postgresql://localhost:5432/postgres?user=gitpod
-# vscode:
-#   extensions:
-#     - vscjava.vscode-java-pack@0.8.0:e/rgc3uUFWKcrT0VEIg1wQ==
-vscode:
-  extensions:
-    - vscjava.vscode-java-pack@0.8.0:e/rgc3uUFWKcrT0VEIg1wQ==
+
+#tasks:
+#  command: pg_start.sh
+#  command: export JDBC_DATABASE_URL=jdbc:postgresql://localhost:5432/postgres?user=gitpod
+
+github:
+  prebuilds:
+    # enable for the master/default branch (defaults to true)
+    master: true
+    # enable for all branches in this repo (defaults to false)
+    branches: false
+    # enable for pull requests coming from this repo (defaults to true)
+    pullRequests: true
+    # add a check to pull requests (defaults to true)
+    addCheck: true
+    # add a "Review in Gitpod" button as a comment to pull requests (defaults to false)
+    addComment: false

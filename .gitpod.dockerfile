@@ -1,8 +1,7 @@
 FROM gitpod/workspace-postgres
 
-USER root
 
-RUN yes | curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+RUN sudo yes | curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
 
 
 
@@ -13,12 +12,11 @@ RUN yes | curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
 #         postgresql-contrib \
 #     && apt-get clean && rm -rf /var/cache/apt/* && rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
 
-RUN apt update && apt install -y net-tools
+RUN sudo apt update && apt install -y net-tools
 
 
 # # Setup postgres server for user gitpod
 
-USER gitpod
 ENV PATH="/usr/lib/postgresql/11/bin:$PATH"
 RUN mkdir -p ~/pg/data; mkdir -p ~/pg/scripts; mkdir -p ~/pg/logs; mkdir -p ~/pg/sockets; initdb -D pg/data/
 RUN echo '#!/bin/bash\n\
@@ -31,4 +29,3 @@ ENV PATH="$HOME/pg/scripts:$PATH"
 
 ENV DATABASE_URL=postgres://gitpod@127.0.0.1/real-estate-db
 
-USER root
